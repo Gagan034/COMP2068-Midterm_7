@@ -1,0 +1,21 @@
+form(action=(ArcadeGame ? "/ArcadeGame/update" : "/ArcadeGame"), method="POST")
+    if ArcadeGame
+        input(type="hidden", name="id", value=ArcadeGame.id)
+
+    .form-group
+        label Title
+        input.form-control(name="ArcadeGame[title]", required, value=(ArcadeGame ? ArcadeGame.title : null))
+
+    .form-group
+        label Content
+        textarea.form-control(name="ArcadeGame[content]")
+            = ArcadeGame ? ArcadeGame.content : null
+        
+    .form-group
+        label Status
+        select.form-control(name="ArcadeGame[status]", required)
+            each status in ['DRAFT', 'PUBLISHED']
+                option(value=status, selected=(ArcadeGame && ArcadeGame.status === status))= status.toLowerCase()
+    
+    .form-group
+        button.btn.btn-dark(type="submit") Submit
