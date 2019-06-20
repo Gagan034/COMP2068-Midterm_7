@@ -13,15 +13,15 @@ block content
             th Actions
         
         tbody
-          each ArcadeGame in ArcadeGame
+          each Arcade in ArcadeGame
             tr
               td
-                a(href=`/ArcadeGame/${ArcadeGame.id}`)= ArcadeGame.title
-              td= ArcadeGame.status
+                a(href=`/ArcadeGame/${Arcade.id}`)= Arcade.title
+              td= Arcade.status
               td
-                a(href=`/ArcadeGame/${ArcadeGame.id}/edit`) edit
+                a(href=`/ArcadeGame/${Arcade.id}/edit`) edit
                 =" | "
                 form.destroy(action="/ArcadeGame/destroy", method="POST", onsubmit='return confirm("Are you Sure?????");')
-                  input(type="hidden", name="id", value=ArcadeGame.id)
+                  input(type="hidden", name="id", value=Arcade.id)
                   input(type="submit", value="delete")
 
